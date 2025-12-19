@@ -1,5 +1,4 @@
-const sketchContainer = document.querySelector(".sketch-container");
-
+const canvasContainer = document.querySelector(".canvas-container");
 let world;
 
 let showStar = false;
@@ -27,7 +26,13 @@ function preload() {
 }
 
 function setup() {
-  createCanvas(600, 800);
+  const renderer = createCanvas(600, 800);
+  renderer.parent(canvasContainer);
+  renderer.elt.style.aspectRatio = `${width} / ${height}`;
+  renderer.elt.style.height = "100%";
+  renderer.elt.style.width = "";
+
+  // createCanvas(600, 800);
   world = new World();
 
   for (let i = 0; i < 5; i++) {
